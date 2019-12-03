@@ -1,14 +1,12 @@
-var path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const base = require("./webpack.config.base.js");
+
 module.exports = {
+  ...base,
   mode: "development",
   devtool: "inline-source-map",
   devServer: {
     contentBase: "./dist"
-  },
-  entry: "./src/index.js",
-  output: {
-    filename: "index.[contenthash].js"
   },
   module: {
     rules: [
@@ -17,11 +15,5 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       }
     ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "webpack-demo",
-      template: "src/assets/index.html"
-    })
-  ]
+  }
 };
